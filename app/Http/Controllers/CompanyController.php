@@ -77,7 +77,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+      $company = Company::find($id);
+      return view('companies.show', compact('company'));
     }
 
     /**
@@ -141,6 +142,11 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $oldCompanyRecord = Company::find($id);
+      // delete old profile picture
+      Storage::delete('public/' . $oldCompanyRecord->logo);
+
+      $oldCompanyRecord->delete();
+      return redirect()->route('companies.index');
     }
 }

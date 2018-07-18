@@ -28,9 +28,9 @@
                         </a>
                       </td>
                       <td class="text-center">
-                        <a href="{{ route('companies.edit', ['id' => 1]) }}" class="btn btn-sm btn-danger">
+                        <a href="{{ route('companies.destroy', ['id' => $company->id]) }}" class="btn btn-sm btn-danger">
                           <span class="glyphicon glyphicon-trash"></span>
-                          Edit
+                          Delete
                         </a>
                       </td>
                     </tr>

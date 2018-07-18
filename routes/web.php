@@ -23,6 +23,7 @@ Route::get('companies/{id}', ['uses' => 'CompanyController@show', 'as' => 'compa
 Route::get('companies/{id}/edit', ['uses' => 'CompanyController@edit', 'as' => 'companies.edit']);
 Route::post('companies', ['uses' => 'CompanyController@store', 'as' => 'companies.store']);
 Route::put('companies/{id}', ['uses' => 'CompanyController@update', 'as' => 'companies.update']);
+Route::get('companies/{id}/delete', ['uses' => 'CompanyController@destroy', 'as' => 'companies.destroy']);
 
 // Employee routes
 Route::get('employees', ['uses' => 'EmployeeController@index', 'as' => 'employees.index']);
