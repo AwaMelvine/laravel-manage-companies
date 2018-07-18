@@ -3,8 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
-          <form class="form" action="index.html" method="post">
+        <div class="col-md-6" style="border: 1px solid #f1f1f1;">
+
+          <form class="form" action="{{ route('companies.store') }}" enctype="multipart/form-data" method="post">
+            {{ csrf_field() }}
             <div class="form-group">
               <label>Name</label>
               <input type="text" name="name" class="form-control" value="{{ old('name') }}">
@@ -25,6 +27,7 @@
               <button type="submit" class="btn btn-primary" name="save_company">Save Company Record</button>
             </div>
           </form>
+
         </div>
     </div>
 </div>
