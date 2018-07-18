@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6" style="border: 1px solid #f1f1f1;">
           <h2 class="text-center" style="margin-top: 30px;">Update Company Record</h2>
-          <form class="form" action="{{ route('companies.store') }}" enctype="multipart/form-data" method="post">
+          <form class="form" action="{{ route('companies.update', ['id' => $company->id]) }}" enctype="multipart/form-data" method="post">
             {{ csrf_field() }}
             {{ method_field('put') }}
             <div class="form-group">
