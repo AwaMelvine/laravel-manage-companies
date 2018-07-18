@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-50">
-            
+
             @include('layouts.messages')
 
             @if(is_null($companies))
@@ -40,6 +40,9 @@
                   @endforeach;
                 </tbody>
               </table>
+
+              {{ $companies->links() }}
+
             @endif
 
 

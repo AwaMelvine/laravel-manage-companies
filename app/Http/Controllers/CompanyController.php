@@ -24,7 +24,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::select('id', 'name', 'email', 'website')->get();
+        $companies = Company::select('id', 'name', 'email', 'website')->paginate(1);
         return view('admin.companies.index', compact('companies'));
     }
 
@@ -112,7 +112,7 @@ class CompanyController extends Controller
     public function update(UpdateCompanyRequest $request, $id)
     {
       $validated = $request->validated();
-      
+
       $input = [
         'name' => $request->input('name'),
         'email' => $request->input('email'),
