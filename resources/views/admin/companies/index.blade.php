@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-50">
+            
+            @include('layouts.messages')
+
             @if(is_null($companies))
               <h2 class="text-center">No company records available</h2>
             @else
