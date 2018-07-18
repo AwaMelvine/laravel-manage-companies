@@ -5,6 +5,12 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
 
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="{{ route('home') }}" class="btn btn-lg btn-info custom-group-btn" style="margin-right: 10px;">Dashboard</a>
+            <a href="{{ route('companies.create') }}" class="btn btn-lg btn-primary custom-group-btn" style="margin-right: 10px;">Create New Company</a>
+          </div>
+          <hr>
+
           @include('layouts.messages')
 
           @if(is_null($employees))

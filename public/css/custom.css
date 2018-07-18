@@ -28,3 +28,7 @@
 .has-error .form-control-feedback {
   color: #a94442;
 }
+
+.custom-group-btn {
+  border-radius: 0px;
+}
