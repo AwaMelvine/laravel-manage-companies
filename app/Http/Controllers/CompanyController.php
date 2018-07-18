@@ -5,40 +5,49 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
+
+// Form Requests
+use App\Http\Requests\StoreCompanyRequest;
+use App\Http\Requests\UpdateCompanyRequest;
+
+// Models
 use App\Company;
+
 use Session;
 
 class CompanyController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of companies
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $companies = Company::select('id', 'name', 'email', 'website')->get();
-        return view('companies.index', compact('companies'));
+        return view('admin.companies.index', compact('companies'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new company.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-      return view('companies.create');
+      return view('admin.companies.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created company in the database.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCompanyRequest $request)
     {
+        $validated = $request->validated();
+
         $input = [
           'name' => $request->input('name'),
           'email' => $request->input('email'),
@@ -70,7 +79,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display details about a specified company.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -78,11 +87,11 @@ class CompanyController extends Controller
     public function show($id)
     {
       $company = Company::find($id);
-      return view('companies.show', compact('company'));
+      return view('admin.companies.show', compact('company'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified company.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -90,18 +99,20 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $company = Company::find($id);
-        return view('companies.edit', compact('company'));
+        return view('admin.companies.edit', compact('company'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified company in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCompanyRequest $request, $id)
     {
+      $validated = $request->validated();
+      
       $input = [
         'name' => $request->input('name'),
         'email' => $request->input('email'),
@@ -135,7 +146,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified company from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
