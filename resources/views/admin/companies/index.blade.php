@@ -22,24 +22,31 @@
                   <th>N</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th colspan="2" class="text-center">Action</th>
+                  <th colspan="3" class="text-center">Action</th>
                 </thead>
                 <tbody>
                   <?php $i = 1; ?>
                   @foreach($companies as $company)
                     <tr>
                       <td>{{ $i++ }}</td>
-                      <td>{{ $company->name }}</td>
+                      <td>
+                        <a href="{{ route('companies.show', ['id' => $company->id]) }}">
+                          {{ $company->name }}
+                        </a>
+                      </td>
                       <td>{{ $company->email }}</td>
                       <td class="text-center">
+                        <a href="{{ route('companies.show', ['id' => $company->id]) }}" class="btn btn-sm btn-info">
+                          Details
+                        </a>
+                      </td>
+                      <td class="text-center">
                         <a href="{{ route('companies.edit', ['id' => $company->id]) }}" class="btn btn-sm btn-success">
-                          <span class="glyphicon glyphicon-pencil"></span>
                           Edit
                         </a>
                       </td>
                       <td class="text-center">
                         <a href="{{ route('companies.destroy', ['id' => $company->id]) }}" class="btn btn-sm btn-danger">
-                          <span class="glyphicon glyphicon-trash"></span>
                           Delete
                         </a>
                       </td>

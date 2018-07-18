@@ -24,7 +24,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::select('id', 'name', 'email', 'website')->paginate(1);
+        $companies = Company::select('id', 'name', 'email', 'website')->paginate(10);
         return view('admin.companies.index', compact('companies'));
     }
 

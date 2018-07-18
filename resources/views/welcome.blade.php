@@ -1,89 +1,35 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                    @endauth
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            @include('layouts.messages')
+            @if(Auth::user())
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    CompaniesManager
-                </div>
-
-
-
+            <div class="container">
+              <div class="jumbotron text-center">
+                <h2 class="text-center">Manage Companies and Employees</h2>
+                <p class="text-center lead">You are logged in. You can now manage companies and employees on the system</p>
+                <br>
+                <a href="{{ route('companies.index') }}" class="btn btn-lg btn-primary">Companies</a>
+                <a href="{{ route('employees.index') }}" class="btn btn-lg btn-info">Employees</a>
+              </div>
             </div>
-        </div>
-    </body>
-</html>
+           @else
+             <div class="container">
+               <div class="jumbotron text-center">
+                 <h2 class="text-center">Manage Companies and Employees</h2>
+                 <p class="text-center lead">You will need to login first</p>
+                 <br>
+                 <a href="{{ route('login') }}" class="btn btn-lg btn-primary">login</a>
+               </div>
+             </div>
+           @endif
+    </div>
+</div>
+@endsection

@@ -18,7 +18,6 @@
                 <a href="{{ route('employees.index') }}" class="btn btn-lg btn-info">Employees</a>
               </div>
             </div>
-
     </div>
 </div>
 @endsection
