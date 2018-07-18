@@ -27,12 +27,12 @@ Route::get('companies/{id}/delete', ['uses' => 'CompanyController@destroy', 'as'
 
 // Employee routes
 Route::get('employees', ['uses' => 'EmployeeController@index', 'as' => 'employees.index']);
+Route::get('employees/create', ['uses' => 'EmployeeController@create', 'as' => 'employees.create']);
 Route::get('employees/{id}', ['uses' => 'EmployeeController@show', 'as' => 'employees.show']);
-Route::get('employees', ['uses' => 'EmployeeController@create', 'as' => 'employees.create']);
 Route::get('employees/{id}/edit', ['uses' => 'EmployeeController@edit', 'as' => 'employees.edit']);
 Route::post('employees', ['uses' => 'EmployeeController@store', 'as' => 'employees.store']);
 Route::put('employees/{id}', ['uses' => 'EmployeeController@update', 'as' => 'employees.update']);
-
+Route::get('employees/{id}/delete', ['uses' => 'EmployeeController@destroy', 'as' => 'employees.destroy']);
 
 Auth::routes();
 

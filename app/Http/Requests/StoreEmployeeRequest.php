@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCompanyRequest extends FormRequest
+class StoreEmployeeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,9 @@ class UpdateCompanyRequest extends FormRequest
     public function rules()
     {
       return [
-          'name' => 'required',
-          'email' => 'sometimes|email',
-          'url' => 'sometimes|url',
-          'logo' => 'dimensions:min_width=100,min_height=100',
+          'firstName' => 'required',
+          'lastName' => 'required',
+          'email' => 'sometimes|email'
       ];
     }
 
@@ -38,11 +37,10 @@ class UpdateCompanyRequest extends FormRequest
      */
     public function messages()
     {
-      return [
-          'name.required' => 'The company name is required',
-          'email.email' => 'The email address you provided is not valid',
-          'website.url' => 'Please provide a valid url for the company website',
-          'logo.dimensions' => 'The logo must have minimun dimensions of 100x100 pixels'
-      ];
+        return [
+            'firstName.required' => 'Employee first name is required',
+            'lastName.required' => 'Employee last name is required',
+            'email.email' => 'The email address provided is not valid'
+        ];
     }
 }
