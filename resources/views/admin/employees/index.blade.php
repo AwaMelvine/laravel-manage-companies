@@ -16,7 +16,7 @@
           @if(is_null($employees))
             <h2 class="text-center">No Employee records available</h2>
           @else
-            <h1 class="text-center">Manage Employees</h1>
+            <h1 class="text-center">Employees</h1>
             <table class="table table-bordered">
               <thead>
                 <th>N</th>

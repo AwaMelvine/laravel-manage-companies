@@ -16,7 +16,7 @@
               <h2 class="text-center">No company records available</h2>
             @else
               <br>
-              <h2 class="text-center">Manage Company Records</h2>
+              <h2 class="text-center">Company Records</h2>
               <table class="table table-bordered">
                 <thead>
                   <th>N</th>
