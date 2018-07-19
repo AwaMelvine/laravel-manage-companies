@@ -27,7 +27,7 @@ Route::post('/braces/demo', function(){
   // echo "<pre>"; print_r("results"); echo "</pre>";
   $results = Braces($notNullStrings);
   // dd($results);
-  return redirect()->back()->with(['results', $results]);
+  return redirect()->back()->with('results', $results);
 })->name('braces.test');
 
 
