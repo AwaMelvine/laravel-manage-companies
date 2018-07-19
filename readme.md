@@ -4,8 +4,9 @@ This application is an Admin Panel that permits a user who is logged in as Admin
 
 ## How to run this application
 
-1 Create a mysql database named `company`
-2 In the root folder of the application, run the command
+1 Create a `.env` file in the root of your application.
+2 Creat a MySQL database and give it  a name say `company`
+3 In the root folder of the application, run the command
 ```
 php artisan migrate --seed
 ```
