@@ -24,9 +24,10 @@ Route::get('/braces/demo', function () {
 Route::post('/braces/demo', function(){
   $valueStringArray = request()->input('valueS');
   $notNullStrings = array_filter($valueStringArray, function($valueS) { return $valueS !== null; });
-  Braces($notNullStrings);
-
-// Braces(["t()(){}", "t()(){}", "t()(){(})", "t()(){}"]);
+  // echo "<pre>"; print_r("results"); echo "</pre>";
+  $results = Braces($notNullStrings);
+  // dd($results);
+  return redirect()->back()->with(['results', $results]);
 })->name('braces.test');
 
 
@@ -117,18 +118,11 @@ function Braces($arrStr) {
     // since closing and opening was done by alternately subtracting and adding 1
     $mapValuesSum = array_sum(array_values($map));
     if ($mapValuesSum !== 0) {
-      array_push($results, [$i => "No"]);
+      array_push($results, "No");
     } else {
-      array_push($results, [$i => "Yes"]);
+      array_push($results, "Yes");
     }
   }
-  echo "<pre>"; print_r($results); echo "</pre>";
+  // echo "<pre>"; print_r($results); echo "</pre>";
   return $results;
-}
-
-
-
-function excludeNullValues($valueS)
-{
-  return $valueS !== null;
 }

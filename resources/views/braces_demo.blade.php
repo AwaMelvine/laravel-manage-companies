@@ -4,6 +4,27 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+          @if(isset($results) && !is_null($results))
+          <table>
+            <thead>
+              <th>String Index</th>
+              <th>Braces Completion Status</th>
+            </thead>
+            <tbody>
+              @foreach ($results as $key => $value)
+                <tr>
+                  <td>{{ $key }}</td>
+                </tr>
+                <tr>
+                  <td>{{ $value }}</td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+
+          @endif
+
+
           <form action="{{ route('braces.test') }}" method="post" >
             {{ csrf_field() }}
             <div class="row">
